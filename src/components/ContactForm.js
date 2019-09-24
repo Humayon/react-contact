@@ -63,7 +63,7 @@ class ContactForm extends Component {
     Resetting Fields & ID
     */
     this.setState({
-      id: null,
+      id: uuid(),
       firstName: '',
       lastName: '',
       email: '',
