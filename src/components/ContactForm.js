@@ -60,10 +60,16 @@ class ContactForm extends Component {
     this.props.addContact(this.state);
 
     /**
-    Resetting UUID
+    Resetting Fields & ID
     */
     this.setState({
-      id: uuid()
+      id: null,
+      firstName: '',
+      lastName: '',
+      email: '',
+      profession: '',
+      type: [],
+      errors: {}
     });
   };
 
@@ -115,7 +121,6 @@ class ContactForm extends Component {
                   name="lastName"
                   value={lastName}
                   onChange={this.inputChangeHandler}
-                  className="validate"
                 />
                 <label htmlFor="lastName">Last Name</label>
                 <span className="helper-text">{errors.lastName}</span>
@@ -138,7 +143,6 @@ class ContactForm extends Component {
                   name="profession"
                   value={profession}
                   onChange={this.inputChangeHandler}
-                  className="validate"
                 />
                 <label htmlFor="profession">Profession</label>
                 <span className="helper-text">{errors.profession}</span>
