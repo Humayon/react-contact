@@ -1,0 +1,16 @@
+nav .brand-logo {
+  padding: 0px 0 0 5px;
+}
+.col.s12.btn-submit {
+  margin-top: 25px;
+}
+.input-field.col.s12.exp {
+  margin-top: 30px;
+}
+.card-title i {
+  font-size: 21px;
+  color: #000;
+}
+.input-field span.helper-text {
+  color: #bf360c;
+}
