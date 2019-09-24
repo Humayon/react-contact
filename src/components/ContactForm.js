@@ -1,7 +1,3 @@
-/**
- * Validator NPM for validation
- */
-
 import React, { Component } from 'react';
 import validator from 'validator';
 import uuid from 'uuid/v4';
@@ -62,7 +58,13 @@ class ContactForm extends Component {
     }
 
     this.props.addContact(this.state);
-    console.log(this.state);
+
+    /**
+    Resetting UUID
+    */
+    this.setState({
+      id: uuid()
+    });
   };
 
   inputChangeHandler = e => {
