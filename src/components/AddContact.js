@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import validator from 'validator';
 import uuid from 'uuid/v4';
 
-class ContactForm extends Component {
+class AddContact extends Component {
   state = {
     id: uuid(),
     firstName: '',
@@ -10,8 +10,6 @@ class ContactForm extends Component {
     email: '',
     profession: '',
     gender: 'male',
-    experience: 'default',
-    type: [],
     errors: {}
   };
 
@@ -68,7 +66,7 @@ class ContactForm extends Component {
       lastName: '',
       email: '',
       profession: '',
-      type: [],
+      gender: '',
       errors: {}
     });
   };
@@ -79,22 +77,8 @@ class ContactForm extends Component {
     });
   };
 
-  checkboxHandler = e => {
-    this.setState({
-      type: this.state.type.concat(e.target.value)
-    });
-  };
-
   render() {
-    let {
-      firstName,
-      lastName,
-      email,
-      profession,
-      gender,
-      experience,
-      errors
-    } = this.state;
+    let { firstName, lastName, email, profession, gender, errors } = this.state;
 
     return (
       <React.Fragment>
@@ -174,46 +158,6 @@ class ContactForm extends Component {
                 </label>
               </div>
 
-              <div className="input-field col s12 exp">
-                <select
-                  name="experience"
-                  value={experience}
-                  onChange={this.inputChangeHandler}
-                >
-                  <option disabled value="default">
-                    Choose your experience
-                  </option>
-                  <option value="1yr">1 year</option>
-                  <option value="2yrs">2 years</option>
-                  <option value="3yrs">3 years</option>
-                </select>
-                <label htmlFor="experience">Experience</label>
-              </div>
-
-              <div className="col s6">
-                <label>
-                  <input
-                    name="type"
-                    value="personal"
-                    onChange={this.checkboxHandler}
-                    type="checkbox"
-                  />
-                  <span>Personal</span>
-                </label>
-              </div>
-
-              <div className="col s6">
-                <label>
-                  <input
-                    name="type"
-                    type="checkbox"
-                    value="professional"
-                    onChange={this.checkboxHandler}
-                  />
-                  <span>Professional</span>
-                </label>
-              </div>
-
               <div className="col s12 btn-submit">
                 <button
                   className="btn waves-effect waves-light teal darken-2"
@@ -231,4 +175,4 @@ class ContactForm extends Component {
   }
 }
 
-export default ContactForm;
+export default AddContact;

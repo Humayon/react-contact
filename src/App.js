@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ContactForm from './components/ContactForm';
+import AddContact from './components/AddContact';
+import EditContact from './components/EditContact';
 import Contacts from './components/Contacts';
 import Header from './components/Header';
 
@@ -11,21 +12,24 @@ export class App extends Component {
         firstName: 'H.',
         lastName: 'Kabir',
         email: 'hk@gmail.com',
-        profession: 'React Ninja'
+        profession: 'React Ninja',
+        gender: 'male'
       },
       {
         id: 2,
         firstName: 'Kabir',
         lastName: 'Singh',
         email: 'ks@gmail.com',
-        profession: 'Express Ninja'
+        profession: 'Express Ninja',
+        gender: 'female'
       },
       {
         id: 3,
         firstName: 'Jhohn',
         lastName: 'Doe',
         email: 'jd@gmail.com',
-        profession: 'Node Ninja'
+        profession: 'Node Ninja',
+        gender: 'male'
       }
     ],
     editedContactList: null
@@ -53,6 +57,16 @@ export class App extends Component {
     });
   };
 
+  latestUpdatedContact = latestContact => {
+    let latestContacts = this.state.contacts.map(contact =>
+      contact.id === latestContact.id ? (contact = latestContact) : contact
+    );
+    this.setState({
+      contacts: latestContacts,
+      editedContactList: null
+    });
+  };
+
   render() {
     return (
       <div id="wrapper">
@@ -64,7 +78,14 @@ export class App extends Component {
           </div>
           <div className="row">
             <div className="col s4">
-              <ContactForm addContact={this.addContactHandler} />
+              {this.state.editedContactList ? (
+                <EditContact
+                  editedContacts={this.state.editedContactList}
+                  latestUpdatedContact={this.latestUpdatedContact}
+                />
+              ) : (
+                <AddContact addContact={this.addContactHandler} />
+              )}
             </div>
             <div className="col s8">
               <Contacts
