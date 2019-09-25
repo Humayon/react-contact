@@ -27,7 +27,8 @@ export class App extends Component {
         email: 'jd@gmail.com',
         profession: 'Node Ninja'
       }
-    ]
+    ],
+    editedContactList: null
   };
 
   addContactHandler = contact => {
@@ -42,6 +43,13 @@ export class App extends Component {
     );
     this.setState({
       contacts: updatedContact
+    });
+  };
+
+  editContactHandler = id => {
+    let editedContact = this.state.contacts.find(contact => contact.id === id);
+    this.setState({
+      editedContactList: editedContact
     });
   };
 
@@ -62,6 +70,7 @@ export class App extends Component {
               <Contacts
                 contacts={this.state.contacts}
                 deleteContact={this.handleDeleteContact}
+                editContact={this.editContactHandler}
               />
             </div>
           </div>

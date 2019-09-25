@@ -15,6 +15,7 @@ class Contacts extends Component {
                 key={contact.id}
                 contact={contact}
                 deleteContact={this.props.deleteContact}
+                editContact={this.props.editContact}
               />
             );
           })}

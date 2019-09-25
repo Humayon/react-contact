@@ -14,6 +14,11 @@ class Contact extends Component {
       showContact: !this.state.showContact
     });
   };
+
+  editContactHandler = id => () => {
+    this.props.editContact(id);
+  };
+
   render() {
     let { id, firstName, lastName, email, profession } = this.props.contact;
     return (
@@ -33,7 +38,9 @@ class Contact extends Component {
                 <a href="#!" onClick={this.deleteContactHandler(id)}>
                   <i className="material-icons right">delete</i>
                 </a>
-                <i className="material-icons right">edit</i>
+                <a href="#!" onClick={this.editContactHandler(id)}>
+                  <i className="material-icons right">edit</i>
+                </a>
               </h3>
               {this.state.showContact && (
                 <ul>
