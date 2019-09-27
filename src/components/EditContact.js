@@ -54,6 +54,20 @@ class AddContact extends Component {
     });
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.editedContacts.id !== this.state.id) {
+      this.setState({
+        id: nextProps.editedContacts.id,
+        firstName: nextProps.editedContacts.firstName,
+        lastName: nextProps.editedContacts.lastName,
+        email: nextProps.editedContacts.email,
+        profession: nextProps.editedContacts.profession,
+        gender: nextProps.editedContacts.gender,
+        errors: {}
+      });
+    }
+  }
+
   render() {
     let { firstName, lastName, email, profession, gender, errors } = this.state;
     return (
