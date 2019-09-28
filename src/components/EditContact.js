@@ -54,18 +54,31 @@ class AddContact extends Component {
     });
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.editedContacts.id !== this.state.id) {
-      this.setState({
-        id: nextProps.editedContacts.id,
-        firstName: nextProps.editedContacts.firstName,
-        lastName: nextProps.editedContacts.lastName,
-        email: nextProps.editedContacts.email,
-        profession: nextProps.editedContacts.profession,
-        gender: nextProps.editedContacts.gender,
+  /**
+   * Parent to child components props update
+   */
+  static getDerivedStateFromProps(props, state) {
+    if (props.editedContacts.id !== state.id) {
+      let {
+        id,
+        firstName,
+        lastName,
+        email,
+        profession,
+        gender
+      } = props.editedContacts;
+
+      return {
+        id: id,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        profession: profession,
+        gender: gender,
         errors: {}
-      });
+      };
     }
+    return null;
   }
 
   render() {
