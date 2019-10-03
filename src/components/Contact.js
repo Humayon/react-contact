@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Contact extends Component {
   state = {
@@ -23,7 +24,7 @@ class Contact extends Component {
     let { id, firstName, lastName, email, profession } = this.props.contact;
     return (
       <React.Fragment>
-        <div className="col s6">
+        <div className="col s12">
           <div className="card">
             <div className="card-content z-depth-3">
               <h3 className="card-title">
@@ -38,9 +39,9 @@ class Contact extends Component {
                 <a href="#!" onClick={this.deleteContactHandler(id)}>
                   <i className="material-icons right">delete</i>
                 </a>
-                <a href="#!" onClick={this.editContactHandler(id)}>
+                <Link to={`/edit/${id}`} onClick={this.editContactHandler(id)}>
                   <i className="material-icons right">edit</i>
-                </a>
+                </Link>
               </h3>
               {this.state.showContact && (
                 <ul>

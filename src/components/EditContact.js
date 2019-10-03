@@ -46,6 +46,8 @@ class AddContact extends Component {
     }
 
     this.props.latestUpdatedContact(this.state);
+
+    this.props.history.push('/');
   };
 
   inputChangeHandler = e => {
@@ -85,7 +87,7 @@ class AddContact extends Component {
     let { firstName, lastName, email, profession, gender, errors } = this.state;
     return (
       <React.Fragment>
-        <h4>Contact Form </h4>
+        <h4 className="center">Edit Cotact</h4>
         <div className="row">
           <form className="col s12" onSubmit={this.submitHandler}>
             <div className="row">

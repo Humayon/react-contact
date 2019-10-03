@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
   render() {
@@ -6,33 +7,47 @@ class Header extends Component {
       <div>
         <nav className="teal darken-2">
           <div className="nav-wrapper">
-            <a href="/" className="brand-logo">
+            <NavLink to="/" exact className="brand-logo">
               Contact App
-            </a>
-            <a
-              href="/"
+            </NavLink>
+            <NavLink
+              to="/"
+              exact
               data-target="contact-app-menu"
               className="sidenav-trigger"
             >
               <i className="material-icons">menu</i>
-            </a>
+            </NavLink>
             <ul className="right hide-on-med-and-down">
-              <li className="active">
-                <a href="/">Home</a>
+              <li>
+                <NavLink to="/" exact activeClassName="active">
+                  Home
+                </NavLink>
               </li>
               <li>
-                <a href="/">Contact</a>
+                <NavLink to="/add" exact activeClassName="active">
+                  Add Contact
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/about" activeClassName="active">
+                  About
+                </NavLink>
               </li>
             </ul>
           </div>
         </nav>
 
         <ul className="sidenav" id="contact-app-menu">
-          <li className="active">
-            <a href="/">Home</a>
+          <li>
+            <NavLink to="/" exact activeClassName="active">
+              Home
+            </NavLink>
           </li>
           <li>
-            <a href="/">Contact</a>
+            <NavLink to="/about" activeClassName="active">
+              About
+            </NavLink>
           </li>
         </ul>
       </div>

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import AddContact from './components/AddContact';
 import EditContact from './components/EditContact';
 import Contacts from './components/Contacts';
 import Header from './components/Header';
+import About from './components/About';
+import NotFound from './components/NotFound';
 
 export class App extends Component {
   state = {
@@ -76,23 +79,54 @@ export class App extends Component {
               <Header />
             </div>
           </div>
+
           <div className="row">
-            <div className="col s4">
-              {this.state.editedContactList ? (
-                <EditContact
-                  editedContacts={this.state.editedContactList}
-                  latestUpdatedContact={this.latestUpdatedContact}
+            <div className="col s12">
+              <Switch>
+                <Route
+                  path="/"
+                  exact
+                  render={props => (
+                    <Contacts
+                      contacts={this.state.contacts}
+                      deleteContact={this.handleDeleteContact}
+                      editContact={this.editContactHandler}
+                      {...props}
+                    />
+                  )}
                 />
-              ) : (
-                <AddContact addContact={this.addContactHandler} />
-              )}
-            </div>
-            <div className="col s8">
-              <Contacts
-                contacts={this.state.contacts}
-                deleteContact={this.handleDeleteContact}
-                editContact={this.editContactHandler}
-              />
+
+                <Route
+                  path="/add"
+                  render={props => (
+                    <AddContact
+                      addContact={this.addContactHandler}
+                      {...props}
+                    />
+                  )}
+                />
+
+                <Route
+                  path="/edit/:id"
+                  render={props =>
+                    this.state.editedContactList ? (
+                      <EditContact
+                        editedContacts={this.state.editedContactList}
+                        latestUpdatedContact={this.latestUpdatedContact}
+                        {...props}
+                      />
+                    ) : (
+                      <Redirect to="/" />
+                    )
+                  }
+                />
+
+                <Route path="/about" exact component={About} />
+
+                <Route path="/about/:name" component={About} />
+
+                <Route component={NotFound} />
+              </Switch>
             </div>
           </div>
         </div>

@@ -14,3 +14,10 @@ nav .brand-logo {
 .input-field span.helper-text {
   color: #bf360c;
 }
+nav ul a.active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidenav li > a.active {
+  background-color: rgba(0, 0, 0, 0.05);
+}

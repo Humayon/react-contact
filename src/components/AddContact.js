@@ -61,14 +61,10 @@ class AddContact extends Component {
     Resetting Fields & ID
     */
     this.setState({
-      id: uuid(),
-      firstName: '',
-      lastName: '',
-      email: '',
-      profession: '',
-      gender: '',
-      errors: {}
+      id: uuid()
     });
+
+    this.props.history.push('/');
   };
 
   inputChangeHandler = e => {
@@ -82,7 +78,7 @@ class AddContact extends Component {
 
     return (
       <React.Fragment>
-        <h4>Contact Form </h4>
+        <h4 className="center">Add Contact</h4>
         <div className="row">
           <form className="col s12" onSubmit={this.submitHandler}>
             <div className="row">

@@ -19,9 +19,10 @@ class Contacts extends Component {
         contact.firstName.toLowerCase().indexOf(this.state.searchText) !== -1 ||
         contact.lastName.toLowerCase().indexOf(this.state.searchText) !== -1
     );
+
     return (
       <React.Fragment>
-        <h4>Contacts</h4>
+        <h4 className="center">All Contacts</h4>
         <nav className="teal darken-2">
           <div className="nav-wrapper">
             <div className="input-field">
