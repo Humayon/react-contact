@@ -11,3 +11,5 @@ To install all dependencies
 To Start the app
 
 ### `npm start`
+
+Project Outlook
